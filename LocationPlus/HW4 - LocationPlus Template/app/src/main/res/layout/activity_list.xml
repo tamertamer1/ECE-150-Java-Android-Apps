@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="LocationPlus">
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvTotalSatellites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Number of Satellites: "
+        android:padding="8dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@id/appToolbar"/> <!-- This positions the TextView below the Toolbar -->
+
+    <TextView
+        android:id="@+id/tvSatellitesUsedInFix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Number Used In Fix: "
+        android:padding="8dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@id/tvTotalSatellites"/> <!-- This TextView is placed below the first one -->
+
+    <ListView
+        android:id="@+id/satelliteList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvSatellitesUsedInFix"/> <!-- The ListView is positioned below the second TextView -->
+
+</RelativeLayout>
