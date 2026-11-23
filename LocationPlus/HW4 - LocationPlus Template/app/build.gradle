@@ -2,6 +2,11 @@ plugins {
     id 'com.android.application'
 }
 
+def localProps = new Properties()
+def localPropsFile = rootProject.file('local.properties')
+if (localPropsFile.exists()) { localPropsFile.withInputStream { localProps.load(it) } }
+
+
 android {
     namespace 'edu.ucsb.ece150.locationplus'
     compileSdk 33
@@ -14,6 +19,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Maps key comes from local.properties (never committed)
+        manifestPlaceholders = [MAPS_API_KEY: localProps.getProperty('MAPS_API_KEY', '')]
     }
 
     buildTypes {

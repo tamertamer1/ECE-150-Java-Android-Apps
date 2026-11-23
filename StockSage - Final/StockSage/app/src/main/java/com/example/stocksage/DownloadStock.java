@@ -35,9 +35,9 @@ public class DownloadStock {
         void onDownloadComplete(String result);
     }
 
-    // DON'T SHARE!!
-    private static final String MARKETAUX_API_KEY = "REMOVED_MARKETAUX_KEY";
-    private static final String OPENAI_API_KEY = "REMOVED_OPENAI_KEY";
+    // Keys are injected at build time from local.properties (see README).
+    private static final String MARKETAUX_API_KEY = BuildConfig.MARKETAUX_API_KEY;
+    private static final String OPENAI_API_KEY = BuildConfig.OPENAI_API_KEY;
 
     public static void download(String stockString, DownloadCompleteListener listener) {
 

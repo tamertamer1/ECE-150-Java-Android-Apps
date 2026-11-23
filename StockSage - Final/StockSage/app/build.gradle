@@ -2,6 +2,11 @@ plugins {
     id 'com.android.application'
 }
 
+def localProps = new Properties()
+def localPropsFile = rootProject.file('local.properties')
+if (localPropsFile.exists()) { localPropsFile.withInputStream { localProps.load(it) } }
+
+
 android {
     namespace 'com.example.stocksage'
     compileSdk 33
@@ -14,6 +19,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // API keys come from local.properties (never committed)
+        buildConfigField "String", "MARKETAUX_API_KEY", "\"${localProps.getProperty('MARKETAUX_API_KEY', '')}\""
+        buildConfigField "String", "OPENAI_API_KEY", "\"${localProps.getProperty('OPENAI_API_KEY', '')}\""
     }
 
     buildTypes {
@@ -21,6 +30,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        buildConfig true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11

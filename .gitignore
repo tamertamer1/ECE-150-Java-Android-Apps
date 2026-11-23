@@ -1,0 +1,17 @@
+# Local config and secrets
+local.properties
+.env
+
+# Android / Gradle build output
+.gradle/
+build/
+*.apk
+*.aab
+captures/
+.externalNativeBuild/
+.cxx/
+
+# IDE
+.idea/
+*.iml
+.DS_Store
